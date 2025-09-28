@@ -1,4 +1,4 @@
-package com.mdavila_2001.practicorecetasmarcelodavila
+package com.mdavila_2001.practicorecetasmarcelodavila.repositories
 
 import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.Recipe
 
@@ -7,19 +7,41 @@ object RecipeRepository {
         Recipe(
             id = 1,
             name = "Spaghetti Carbonara",
-            ingredients = listOf("Spaghetti", "Huevos", "Queso Parmesano", "Guanciale", "Pimienta Negra"),
+            ingredients = listOf(
+                "Spaghetti",
+                "Huevos",
+                "Queso Parmesano",
+                "Guanciale",
+                "Pimienta Negra"
+            ),
             procedure = "Cocinar la pasta. Freír el guanciale hasta que esté crujiente. Batir los huevos con el queso parmesano y la pimienta negra. Mezclar todo junto con la pasta caliente."
         ),
         Recipe(
             id = 2,
             name = "Pollo al Curry",
-            ingredients = listOf("Pollo", "Polvo de Curry", "Leche de Coco", "Cebolla", "Ajo", "Jengibre"),
+            ingredients = listOf(
+                "Pollo",
+                "Polvo de Curry",
+                "Leche de Coco",
+                "Cebolla",
+                "Ajo",
+                "Jengibre"
+            ),
             procedure = "Sofreír la cebolla, el ajo y el jengibre. Añadir el pollo y cocinar hasta que esté dorado. Agregar el polvo de curry y la leche de coco. Cocinar a fuego lento hasta que el pollo esté tierno."
         ),
         Recipe(
             id = 3,
             name = "Majadito Batido",
-            ingredients = listOf("Arroz", "Charque", "Cebolla", "Urucú", "Huevo", "Plátano"),
+            ingredients = listOf(
+                "Arroz",
+                "Charque",
+                "Cebolla",
+                "Pimentón",
+                "Ajo",
+                "Urucú",
+                "Huevo",
+                "Plátano"
+            ),
             procedure = "Cocinar el arroz aparte. Sofreír la cebolla, pimentón y ajo en aceite. Agregar el charque desmenuzado y el urucú para darle color al arroz. Incorporar el arroz cocido y mezclar bien hasta que todo quede uniforme. Servir acompañado con huevo frito y plátano frito al lado."
         )
     )

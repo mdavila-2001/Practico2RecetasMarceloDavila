@@ -52,7 +52,7 @@ fun RecipeItemPreview() {
             id = 1,
             name = "Spaghetti Carbonara",
             ingredients = listOf("Spaghetti", "Huevos", "Queso Parmesano", "Guanciale", "Pimienta Negra"),
-            procedure = "Cocinar la pasta. Freír el guanciale hasta que esté crujiente. Batir los huevos con el queso parmesano y la pimienta negra. Mezclar todo junto con la pasta caliente."
+            procedure = "Cocinar la pasta. Freír el guanciale hasta que esté crujiente. Batir los huevos (solamente las yemas) con el queso parmesano y la pimienta negra. Mezclar todo junto con la pasta caliente."
         ),
         onClick = {}
     )

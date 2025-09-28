@@ -11,7 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.IngredientSelectScreen
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.theme.PracticoRecetasMarceloDavilaTheme
+import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.RecipeViewmodel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +22,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             PracticoRecetasMarceloDavilaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+                    IngredientSelectScreen(
+                        vm = RecipeViewmodel(),
+                        onSearch = {},
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

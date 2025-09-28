@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.mdavila_2001.practicorecetasmarcelodavila.RecipeRepository
+import com.mdavila_2001.practicorecetasmarcelodavila.repositories.RecipeRepository
 
 data class Recipe (
     val id: Int,
