@@ -68,7 +68,7 @@ fun RecipeListScreen(
         floatingActionButton = {
             // Add a floating action button to add a new recipe
             FloatingActionButton(
-                onClick = { onRecipeAdd }
+                onClick = { onRecipeAdd() }
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Agregar receta")
             }

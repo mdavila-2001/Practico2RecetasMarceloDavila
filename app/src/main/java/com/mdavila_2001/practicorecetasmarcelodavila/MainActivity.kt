@@ -27,17 +27,17 @@ class MainActivity : ComponentActivity() {
 //                        name = "Android",
 //                        modifier = Modifier.padding(innerPadding)
 //                    )
-//                    IngredientSelectScreen(
-//                        vm = RecipeViewmodel(),
-//                        onSearch = {},
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-                    RecipeListScreen(
+                    IngredientSelectScreen(
                         vm = RecipeViewmodel(),
-                        onRecipeClick = {},
-                        onRecipeAdd = {},
+                        onSearch = {},
                         modifier = Modifier.padding(innerPadding)
                     )
+//                    RecipeListScreen(
+//                        vm = RecipeViewmodel(),
+//                        onRecipeClick = {},
+//                        onRecipeAdd = {},
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
                 }
             }
         }

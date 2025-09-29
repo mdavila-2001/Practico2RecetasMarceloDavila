@@ -1,11 +1,10 @@
-package com.mdavila_2001.practicorecetasmarcelodavila.ui.components
+package com.mdavila_2001.practicorecetasmarcelodavila.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -23,6 +22,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mdavila_2001.practicorecetasmarcelodavila.ui.components.RecipeList
 import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.Recipe
 import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.RecipeViewmodel
 
@@ -82,7 +82,8 @@ fun SearchResultsScreen(
             ) {
                 Text(
                     text = "No se encontraron recetas con los ingredientes seleccionados.",
-                    style = MaterialTheme.typography.bodyLarge
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(16.dp)
                 )
             }
         } else {
