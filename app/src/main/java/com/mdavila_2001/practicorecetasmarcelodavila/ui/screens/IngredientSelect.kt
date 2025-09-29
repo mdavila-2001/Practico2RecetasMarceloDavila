@@ -1,5 +1,6 @@
 package com.mdavila_2001.practicorecetasmarcelodavila.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -28,13 +29,6 @@ fun IngredientSelectScreen(
     onSearch: () -> Unit,
     modifier: Modifier
 ) {
-    val ingredients by remember {
-        mutableStateOf(vm.ingredients)
-    }
-    val selectedIngredients by remember {
-        mutableStateOf(vm.selectedIngredients)
-    }
-
     Scaffold(
         bottomBar = {
             Button(
@@ -79,6 +73,7 @@ fun IngredientSelectScreen(
     }
 }
 
+@SuppressLint("ViewModelConstructorInComposable")
 @Preview(showBackground = true)
 @Composable
 fun IngredientSelectScreenPreview() {

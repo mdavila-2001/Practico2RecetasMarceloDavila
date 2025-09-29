@@ -84,6 +84,10 @@ object RecipeRepository {
         }
     }
 
+    fun removeRecipe(recipe: Recipe) {
+        recipes.removeIf { it.id == recipe.id }
+    }
+
     fun clearAll() {
         recipes.clear()
         ingredients.clear()

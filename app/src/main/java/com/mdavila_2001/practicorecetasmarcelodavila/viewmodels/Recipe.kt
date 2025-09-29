@@ -26,6 +26,9 @@ class RecipeViewmodel : ViewModel() {
     var searchResults by mutableStateOf(listOf<Recipe>())
         private set
 
+    var selectedRecipe by mutableStateOf<Recipe?>(null)
+        private set
+
     fun toggleIngredientSelection(ingredient: String, isSelected: Boolean) {
         selectedIngredients = if (isSelected) {
             selectedIngredients + ingredient
@@ -50,6 +53,19 @@ class RecipeViewmodel : ViewModel() {
 
     fun searchByRecipeName(query: String) {
         searchResults = RecipeRepository.searchByRecipe(query)
+    }
+
+    fun selectRecipeById(recipe: Recipe) {
+        selectedRecipe = recipe
+    }
+
+    fun deleteRecipe(recipe: Recipe) {
+        RecipeRepository.removeRecipe(recipe)
+        refresh()
+
+        if (selectedRecipe?.id == recipe.id) {
+            selectedRecipe = null
+        }
     }
 
     private fun refresh() {
