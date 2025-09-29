@@ -35,6 +35,7 @@ class MainActivity : ComponentActivity() {
                     RecipeListScreen(
                         vm = RecipeViewmodel(),
                         onRecipeClick = {},
+                        onRecipeAdd = {},
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
