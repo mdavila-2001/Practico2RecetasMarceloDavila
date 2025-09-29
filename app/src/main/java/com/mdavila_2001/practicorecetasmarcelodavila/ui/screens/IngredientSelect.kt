@@ -42,7 +42,7 @@ fun IngredientSelectScreen(
                     vm.searchBySelectedIngredients()
                     onSearch()
                 },
-                modifier = Modifier
+                modifier
                     .padding(16.dp)
                     .fillMaxWidth()
             ) {

@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.IngredientSelectScreen
+import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.RecipeListScreen
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.theme.PracticoRecetasMarceloDavilaTheme
 import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.RecipeViewmodel
 
@@ -26,9 +27,14 @@ class MainActivity : ComponentActivity() {
 //                        name = "Android",
 //                        modifier = Modifier.padding(innerPadding)
 //                    )
-                    IngredientSelectScreen(
+//                    IngredientSelectScreen(
+//                        vm = RecipeViewmodel(),
+//                        onSearch = {},
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+                    RecipeListScreen(
                         vm = RecipeViewmodel(),
-                        onSearch = {},
+                        onRecipeClick = {},
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
