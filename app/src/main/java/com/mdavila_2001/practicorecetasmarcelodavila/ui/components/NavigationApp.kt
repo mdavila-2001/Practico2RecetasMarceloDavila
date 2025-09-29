@@ -19,16 +19,17 @@ import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.RecipeViewmodel
 fun NavigationApp(
     navController: NavHostController = rememberNavController(),
     vm: RecipeViewmodel = RecipeViewmodel(),
+    modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = navController,
-        startDestination = NavScreens.INGREDIENTS
+        startDestination = NavScreens.INGREDIENTS.name
     ) {
         composable(NavScreens.INGREDIENTS.name) {
             IngredientSelectScreen(
                 vm = vm,
                 onSearch = {
-                    navController.navigate(NavScreens.RECIPES.name)
+                    navController.navigate(NavScreens.RESULTS.name)
                 },
                 modifier = Modifier
             )
@@ -50,7 +51,8 @@ fun NavigationApp(
         composable(NavScreens.RESULTS.name) {
             SearchResultsScreen(
                 vm = vm,
-                onRecipeClick = {
+                onRecipeClick = { recipe ->
+                    vm.selectedRecipe = recipe
                     navController.navigate(NavScreens.DETAILS.name)
                 },
                 onBackClick = {
@@ -65,6 +67,13 @@ fun NavigationApp(
                 RecipeDetailScreen(
                     recipe = recipe,
                     onBackClick = {
+                        navController.popBackStack()
+                    },
+                    onEdit = {
+
+                    },
+                    onDelete = { r ->
+                        vm.deleteRecipe(r)
                         navController.popBackStack()
                     },
                     modifier = Modifier

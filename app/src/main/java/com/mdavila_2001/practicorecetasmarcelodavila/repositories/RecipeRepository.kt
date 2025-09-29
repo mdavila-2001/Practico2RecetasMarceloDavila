@@ -39,7 +39,7 @@ object RecipeRepository {
                 "Pimentón",
                 "Ajo",
                 "Urucú",
-                "Huevo",
+                "Huevos",
                 "Plátano"
             ),
             procedure = "Cocinar el arroz aparte. Sofreír la cebolla, pimentón y ajo en aceite. Agregar el charque desmenuzado y el urucú para darle color al arroz. Incorporar el arroz cocido y mezclar bien hasta que todo quede uniforme. Servir acompañado con huevo frito y plátano frito al lado."

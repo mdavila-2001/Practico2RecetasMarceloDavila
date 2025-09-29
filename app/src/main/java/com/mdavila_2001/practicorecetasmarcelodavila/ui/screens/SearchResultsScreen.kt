@@ -43,7 +43,7 @@ fun SearchResultsScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            "Todas las Recetas",
+                            "Resultados",
                             style = MaterialTheme.typography.headlineLarge
                         )
                     }

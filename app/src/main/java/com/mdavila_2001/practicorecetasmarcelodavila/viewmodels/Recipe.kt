@@ -27,7 +27,7 @@ class RecipeViewmodel : ViewModel() {
         private set
 
     var selectedRecipe by mutableStateOf<Recipe?>(null)
-        private set
+        internal set
 
     fun toggleIngredientSelection(ingredient: String, isSelected: Boolean) {
         selectedIngredients = if (isSelected) {
