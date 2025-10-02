@@ -2,6 +2,7 @@ package com.mdavila_2001.practicorecetasmarcelodavila.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -35,56 +36,55 @@ fun RecipeListScreen(
     onRecipeAdd: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Box(
-                        modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            "Todas las Recetas",
-                            style = MaterialTheme.typography.headlineLarge,
-                            color = Color.Black
-                        )
-                    }
-                },
-                modifier
-                    .padding(bottom = 4.dp)
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(
-                                Color(0xFF16FA2C),
-                                Color(0xFF28E4FA)
-                            ),
-                            start = Offset(-200f, 0f),
-                            end = Offset(500f, 1000f)
-                        )
-                    ),
-                colors = TopAppBarDefaults.topAppBarColors(
-                    Color.Transparent
-                )
+    Column {
+        TopAppBar(
+            title = {
+                Box(
+                    modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        "Todas las Recetas",
+                        style = MaterialTheme.typography.headlineLarge,
+                        color = Color.Black
+                    )
+                }
+            },
+            modifier
+                .padding(bottom = 4.dp)
+                .background(
+                    brush = Brush.linearGradient(
+                        colors = listOf(
+                            Color(0xFF16FA2C),
+                            Color(0xFF28E4FA)
+                        ),
+                        start = Offset(-200f, 0f),
+                        end = Offset(500f, 1000f)
+                    )
+                ),
+            colors = TopAppBarDefaults.topAppBarColors(
+                Color.Transparent
             )
-        },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = { onRecipeAdd() }
-            ) {
-                Icon(Icons.Default.Add, contentDescription = "Agregar receta")
-            }
-        }
-    ) { innerPadding ->
+        )
         RecipeList(
             recipes = vm.recipes,
             onRecipeClick = onRecipeClick,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(8.dp)
         )
-        Text("No encuentras tu receta? Agregala con el boton +", modifier = Modifier.padding(80.dp,0.dp,80.dp,80.dp))
-        Button({
-            onRecipeAdd()
-        }) {
-            "Agregar Receta"
+        Text(
+            "No encuentras tu receta? Agregala con el boton:",
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.CenterHorizontally),
+            style = MaterialTheme.typography.bodyMedium
+        )
+        Button(
+            onClick = { onRecipeAdd() },
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.CenterHorizontally)
+        ) {
+            Text("Agregar Receta")
         }
     }
 }

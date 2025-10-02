@@ -28,20 +28,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             PracticoRecetasMarceloDavilaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    IngredientSelectScreen(
-//                        vm = RecipeViewmodel(),
-//                        onSearch = {},
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-//                    RecipeListScreen(
-//                        vm = RecipeViewmodel(),
-//                        onRecipeClick = {},
-//                        onRecipeAdd = {},
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-//                    NavigationApp(
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
                     MainScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -62,14 +48,15 @@ fun MainScreen(modifier: Modifier = Modifier) {
 
     Scaffold(
         bottomBar = {
-            // Aquí usamos el BottomNavigationBar que pasamos el estado seleccionado
-            BottomNavigationBar(
-                selectedTab = selectedTab.value,
-                onTabSelected = onTabSelected,
-                modifier = Modifier
-            )
+            if (selectedTab.value == 0 || selectedTab.value == 1) {
+                BottomNavigationBar(
+                    selectedTab = selectedTab.value,
+                    onTabSelected = onTabSelected,
+                    modifier = Modifier
+                )
+            }
         }
-    ) { innerPadding->
+    ) { innerPadding ->
         NavigationApp(
             selectedTab = selectedTab.value,
             modifier = modifier.padding(innerPadding)
