@@ -6,7 +6,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.mdavila_2001.practicorecetasmarcelodavila.NavScreens
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.IngredientSelectScreen
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.RecipeDetailScreen
@@ -16,14 +15,14 @@ import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.SearchResultsScr
 import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.RecipeViewmodel
 
 @SuppressLint("ViewModelConstructorInComposable")
+// En este archivo, en la función NavigationApp
 @Composable
 fun NavigationApp(
     vm: RecipeViewmodel = RecipeViewmodel(),
     selectedTab: Int,
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-
-    val navController = rememberNavController()
 
     NavHost(
         navController = navController,
@@ -47,6 +46,7 @@ fun NavigationApp(
                     navController.navigate(NavScreens.DETAILS.name)
                 },
                 onRecipeAdd = {
+                    vm.clearSelectedRecipe()
                     navController.navigate(NavScreens.FORM.name)
                 },
                 modifier = Modifier
@@ -89,8 +89,11 @@ fun NavigationApp(
         composable(NavScreens.FORM.name) {
             RecipeFormScreen(
                 vm = vm,
-                onSaved = {navController.popBackStack()},
-                onCancel = {navController.popBackStack()},
+                onSaved = {
+                    navController.popBackStack(NavScreens.DETAILS.name, true)
+                    navController.navigate(NavScreens.RECIPES.name)
+                },
+                onCancel = { navController.popBackStack() },
                 modifier = Modifier
             )
         }

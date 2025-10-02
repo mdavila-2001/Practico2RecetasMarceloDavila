@@ -8,18 +8,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.components.BottomNavigationBar
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.components.NavigationApp
-import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.IngredientSelectScreen
-import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.RecipeListScreen
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.theme.PracticoRecetasMarceloDavilaTheme
-import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.RecipeViewmodel
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,9 +45,14 @@ fun MainScreen(modifier: Modifier = Modifier) {
         selectedTab.value = index
     }
 
+    val navController = rememberNavController()
+    val navBackStackEntryState = navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntryState.value?.destination?.route
+    val showBottomBar = currentRoute != NavScreens.FORM.name
+
     Scaffold(
         bottomBar = {
-            if (selectedTab.value == 0 || selectedTab.value == 1) {
+            if (showBottomBar && (selectedTab.value == 0 || selectedTab.value == 1)) {
                 BottomNavigationBar(
                     selectedTab = selectedTab.value,
                     onTabSelected = onTabSelected,
@@ -59,6 +63,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
     ) { innerPadding ->
         NavigationApp(
             selectedTab = selectedTab.value,
+            navController = navController,
             modifier = modifier.padding(innerPadding)
         )
     }
