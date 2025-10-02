@@ -15,7 +15,6 @@ import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.SearchResultsScr
 import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.RecipeViewmodel
 
 @SuppressLint("ViewModelConstructorInComposable")
-// En este archivo, en la función NavigationApp
 @Composable
 fun NavigationApp(
     vm: RecipeViewmodel = RecipeViewmodel(),
