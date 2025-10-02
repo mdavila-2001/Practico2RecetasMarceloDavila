@@ -62,6 +62,10 @@ fun NavigationApp(
                 onBackClick = {
                     navController.popBackStack()
                 },
+                onRecipeAdd = {
+                    vm.clearSelectedRecipe()
+                    navController.navigate(NavScreens.FORM.name)
+                },
                 modifier = Modifier
             )
         }

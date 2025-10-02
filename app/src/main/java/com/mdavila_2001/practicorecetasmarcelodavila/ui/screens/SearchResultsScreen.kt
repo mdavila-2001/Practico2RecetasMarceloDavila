@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,6 +33,7 @@ fun SearchResultsScreen(
     vm: RecipeViewmodel,
     onRecipeClick: (Recipe) -> Unit,
     onBackClick: () -> Unit,
+    onRecipeAdd: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -85,6 +87,14 @@ fun SearchResultsScreen(
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(16.dp)
                 )
+                Button(
+                    onClick = { onRecipeAdd() },
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.Center)
+                ) {
+                    Text("Agregar Receta")
+                }
             }
         } else {
             RecipeList(
@@ -103,6 +113,7 @@ fun SearchResultsScreenPreview() {
         vm = RecipeViewmodel(),
         onRecipeClick = {},
         onBackClick = {},
+        onRecipeAdd = {},
         modifier = Modifier
     )
 }
