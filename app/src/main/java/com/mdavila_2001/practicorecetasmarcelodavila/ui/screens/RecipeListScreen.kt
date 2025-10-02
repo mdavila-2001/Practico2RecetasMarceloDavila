@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -44,7 +45,8 @@ fun RecipeListScreen(
                     ) {
                         Text(
                             "Todas las Recetas",
-                            style = MaterialTheme.typography.headlineLarge
+                            style = MaterialTheme.typography.headlineLarge,
+                            color = Color.Black
                         )
                     }
                 },
@@ -66,7 +68,6 @@ fun RecipeListScreen(
             )
         },
         floatingActionButton = {
-            // Add a floating action button to add a new recipe
             FloatingActionButton(
                 onClick = { onRecipeAdd() }
             ) {
@@ -79,6 +80,12 @@ fun RecipeListScreen(
             onRecipeClick = onRecipeClick,
             modifier = Modifier.padding(innerPadding)
         )
+        Text("No encuentras tu receta? Agregala con el boton +", modifier = Modifier.padding(80.dp,0.dp,80.dp,80.dp))
+        Button({
+            onRecipeAdd()
+        }) {
+            "Agregar Receta"
+        }
     }
 }
 

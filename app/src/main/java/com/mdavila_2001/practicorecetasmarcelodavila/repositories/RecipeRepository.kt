@@ -69,6 +69,13 @@ object RecipeRepository {
         }
     }
 
+    fun updateRecipe(updatedRecipe: Recipe) {
+        val index = recipes.indexOfFirst { it.id == updatedRecipe.id }
+        if (index != -1) {
+            recipes[index] = updatedRecipe
+        }
+    }
+
     fun searchByIngredient(selected: Set<String>): List<Recipe> {
         if (selected.isEmpty()) return emptyList()
         return recipes.filter { recipe ->

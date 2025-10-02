@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -29,21 +31,7 @@ fun IngredientSelectScreen(
     onSearch: () -> Unit,
     modifier: Modifier
 ) {
-    Scaffold(
-        bottomBar = {
-            Button(
-                onClick = {
-                    vm.searchBySelectedIngredients()
-                    onSearch()
-                },
-                modifier
-                    .padding(16.dp)
-                    .fillMaxWidth()
-            ) {
-                Text("Buscar Recetas")
-            }
-        }
-    ) { innerPadding ->
+    Scaffold() { innerPadding ->
         Column(
             modifier = Modifier
                 .padding(innerPadding)
@@ -55,9 +43,7 @@ fun IngredientSelectScreen(
                 text = "Seleccioná los ingredientes que tenés:",
                 style = MaterialTheme.typography.titleMedium
             )
-            FlowRow(
-                modifier = Modifier.fillMaxSize()
-            ) {
+            FlowRow() {
                 vm.ingredients.forEach { ingredient ->
                     IngredientChip(
                         ingredient = ingredient,
@@ -68,6 +54,18 @@ fun IngredientSelectScreen(
                         modifier = Modifier.padding(4.dp)
                     )
                 }
+            }
+            Spacer(Modifier.height(16.dp))
+            Button(
+                onClick = {
+                    vm.searchBySelectedIngredients()
+                    onSearch()
+                },
+                modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
+                Text("Buscar Recetas")
             }
         }
     }

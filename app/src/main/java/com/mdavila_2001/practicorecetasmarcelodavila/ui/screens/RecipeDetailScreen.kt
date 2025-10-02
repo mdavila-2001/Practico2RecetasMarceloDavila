@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -83,32 +85,6 @@ fun RecipeDetailScreen(
                 )
             )
         },
-        bottomBar = {
-            Row(
-                modifier
-                    .padding(16.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                OutlinedButton(
-                    onClick = { onEdit(recipe) },
-                ) {
-                    Text("Editar")
-                }
-                Button(
-                    onClick = {
-                        onDelete(recipe)
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFFFF4D4D),
-                        contentColor = Color.White
-                    )
-                ) {
-                    Text("Eliminar")
-                }
-            }
-        }
     ) { innerPadding ->
         Column(
             modifier
@@ -136,6 +112,31 @@ fun RecipeDetailScreen(
                 recipe.procedure,
                 style = MaterialTheme.typography.bodyMedium
             )
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                modifier
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                OutlinedButton(
+                    onClick = { onEdit(recipe) },
+                ) {
+                    Text("Editar")
+                }
+                Button(
+                    onClick = {
+                        onDelete(recipe)
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFFF4D4D),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Text("Eliminar")
+                }
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import com.mdavila_2001.practicorecetasmarcelodavila.NavScreens
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.IngredientSelectScreen
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.RecipeDetailScreen
+import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.RecipeFormScreen
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.RecipeListScreen
 import com.mdavila_2001.practicorecetasmarcelodavila.ui.screens.SearchResultsScreen
 import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.RecipeViewmodel
@@ -17,13 +18,16 @@ import com.mdavila_2001.practicorecetasmarcelodavila.viewmodels.RecipeViewmodel
 @SuppressLint("ViewModelConstructorInComposable")
 @Composable
 fun NavigationApp(
-    navController: NavHostController = rememberNavController(),
     vm: RecipeViewmodel = RecipeViewmodel(),
+    selectedTab: Int,
     modifier: Modifier = Modifier
 ) {
+
+    val navController = rememberNavController()
+
     NavHost(
         navController = navController,
-        startDestination = NavScreens.INGREDIENTS.name
+        startDestination = if (selectedTab == 0) NavScreens.INGREDIENTS.name else NavScreens.RECIPES.name,
     ) {
         composable(NavScreens.INGREDIENTS.name) {
             IngredientSelectScreen(
@@ -38,7 +42,8 @@ fun NavigationApp(
         composable(NavScreens.RECIPES.name) {
             RecipeListScreen(
                 vm = vm,
-                onRecipeClick = {
+                onRecipeClick = { recipe ->
+                    vm.selectedRecipe = recipe
                     navController.navigate(NavScreens.DETAILS.name)
                 },
                 onRecipeAdd = {
@@ -70,7 +75,7 @@ fun NavigationApp(
                         navController.popBackStack()
                     },
                     onEdit = {
-
+                        navController.navigate(NavScreens.FORM.name)
                     },
                     onDelete = { r ->
                         vm.deleteRecipe(r)
@@ -79,6 +84,15 @@ fun NavigationApp(
                     modifier = Modifier
                 )
             }
+        }
+
+        composable(NavScreens.FORM.name) {
+            RecipeFormScreen(
+                vm = vm,
+                onSaved = {navController.popBackStack()},
+                onCancel = {navController.popBackStack()},
+                modifier = Modifier
+            )
         }
     }
 }

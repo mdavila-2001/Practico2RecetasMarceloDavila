@@ -42,6 +42,11 @@ class RecipeViewmodel : ViewModel() {
         refresh()
     }
 
+    fun updateRecipe(recipe: Recipe) {
+        RecipeRepository.updateRecipe(recipe)
+        refresh() // refrescamos la lista para que los cambios se reflejen
+    }
+
     fun addIngredient(name: String) {
         RecipeRepository.addIngredient(name)
         refresh()
@@ -57,6 +62,10 @@ class RecipeViewmodel : ViewModel() {
 
     fun selectRecipeById(recipe: Recipe) {
         selectedRecipe = recipe
+    }
+
+    fun clearSelectedRecipe() {
+        selectedRecipe = null
     }
 
     fun deleteRecipe(recipe: Recipe) {

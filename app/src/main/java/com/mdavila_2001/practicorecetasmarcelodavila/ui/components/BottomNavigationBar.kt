@@ -1,8 +1,13 @@
 package com.mdavila_2001.practicorecetasmarcelodavila.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -32,14 +37,36 @@ fun BottomNavigationBar(
         NavigationBarItem(
             selected = selectedTab == 0,
             onClick = { onTabSelected(0) },
-            icon = { /* Icono para la pestaña 1 */ },
-            label = { /* Etiqueta para la pestaña 1 */ }
+            icon = {
+                Icon(
+                    Icons.Default.Search,
+                    contentDescription = "Buscar",
+                    tint = if (selectedTab == 0) Color.White else Color.Black
+                )
+            },
+            label = {
+                Text(
+                    "Buscar",
+                    color =Color.Black
+                )
+            }
         )
         NavigationBarItem(
             selected = selectedTab == 1,
             onClick = { onTabSelected(1) },
-            icon = { /* Icono para la pestaña 2 */ },
-            label = { /* Etiqueta para la pestaña 2 */ }
+            icon = {
+                Icon(
+                    Icons.Default.List,
+                    contentDescription = "Recetas",
+                    tint = if (selectedTab == 1) Color.White else Color.Black
+                )
+            },
+            label = {
+                Text(
+                    "Recetas",
+                    color = Color.Black
+                )
+            }
         )
     }
 }
