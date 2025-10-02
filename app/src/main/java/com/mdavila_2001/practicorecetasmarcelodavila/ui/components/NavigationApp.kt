@@ -90,8 +90,7 @@ fun NavigationApp(
             RecipeFormScreen(
                 vm = vm,
                 onSaved = {
-                    navController.popBackStack(NavScreens.DETAILS.name, true)
-                    navController.navigate(NavScreens.RECIPES.name)
+                    navController.popBackStack(NavScreens.RECIPES.name, true)
                 },
                 onCancel = { navController.popBackStack() },
                 modifier = Modifier

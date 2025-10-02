@@ -66,7 +66,7 @@ fun RecipeFormScreen(
             .padding(16.dp)
             .fillMaxSize()
             .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         OutlinedTextField(
             value = name,
