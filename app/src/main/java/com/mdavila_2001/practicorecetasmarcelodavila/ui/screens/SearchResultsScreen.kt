@@ -2,6 +2,7 @@ package com.mdavila_2001.practicorecetasmarcelodavila.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -82,18 +83,21 @@ fun SearchResultsScreen(
                     .fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = "No se encontraron recetas con los ingredientes seleccionados.",
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(16.dp)
-                )
-                Button(
-                    onClick = { onRecipeAdd() },
+                Column(
                     modifier = Modifier
                         .padding(16.dp)
                         .align(Alignment.Center)
                 ) {
-                    Text("Agregar Receta")
+                    Text(
+                        text = "No se encontraron recetas con los ingredientes seleccionados.",
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(16.dp)
+                    )
+                    Button(
+                        onClick = { onRecipeAdd() },
+                    ) {
+                        Text("Agregar Receta")
+                    }
                 }
             }
         } else {
